@@ -54,6 +54,7 @@ namespace scene
    float fov= glm::pi<float>() / 2;
    float nearz=0.1f;
    float farz=3.0f;
+   const float ASPECT_RATIO = 1.0f;
 
    const std::string shader_dir = "shaders/";
    const std::string vertex_shader("lab2_vs.glsl");
@@ -283,6 +284,31 @@ void mouse_button(GLFWwindow* window, int button, int action, int mods)
    //std::cout << "button : "<< button << ", action: " << action << ", mods: " << mods << std::endl;
 }
 
+void framebuffer_size_callback(GLFWwindow* window, int width, int height){
+    // Calculate the new aspect ratio
+    float windowAspectRatio = (float)width / (float)height;
+
+    int newWidth, newHeight;
+
+    if (windowAspectRatio > scene::ASPECT_RATIO) {
+        // Window is wider than the aspect ratio, so we adjust the width
+        newWidth = (int)(height * scene::ASPECT_RATIO);
+        newHeight = height;
+    }
+    else {
+        // Window is taller than the aspect ratio, so we adjust the height
+        newWidth = width;
+        newHeight = (int)(width / scene::ASPECT_RATIO);
+    }
+
+    // Center the viewport (letterboxing or pillarboxing)
+    int viewportX = (width - newWidth) / 2;
+    int viewportY = (height - newHeight) / 2;
+
+    glViewport(viewportX, viewportY, newWidth, newHeight);
+}
+
+
 //Initialize OpenGL state. This function only gets called once.
 void init()
 {
@@ -343,6 +369,7 @@ int main(void)
    glfwSetKeyCallback(window, keyboard);
    glfwSetCursorPosCallback(window, mouse_cursor);
    glfwSetMouseButtonCallback(window, mouse_button);
+   glfwSetWindowSizeCallback(window, framebuffer_size_callback);
 
    // Make the window's context current
    glfwMakeContextCurrent(window);

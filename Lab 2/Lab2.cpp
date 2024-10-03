@@ -48,13 +48,14 @@ namespace scene
    int waveSpeed = 0;
    float scaleNonuniform[3] = { 1.0f,1.0f,1.0f};
    bool isRotationAutomatic = false;
-   float tPosition = 0;
+   float tPosition[3] = { 0.0f,0.0f,0.0f };
    int multOrder = 0;
    float lookatAtt[3] = { 0.0f,0.0f,1.0f };
    float fov= glm::pi<float>() / 2;
    float nearz=0.1f;
    float farz=3.0f;
    const float ASPECT_RATIO = 1.0f;
+   int isUniformScale = 0;
 
    const std::string shader_dir = "shaders/";
    const std::string vertex_shader("lab2_vs.glsl");
@@ -90,24 +91,44 @@ void draw_gui(GLFWwindow* window)
 
    ImGui::Begin("Arpan Prajapati");
    ImGui::Text("Lab 2.1");
+   ImGui::Text("");
    ImGui::Checkbox("Enable Screen Clearing", &scene::isClearScreen);
    ImGui::Checkbox("Enable Depth Testing", &scene::isEnableDepthTesting);
    ImGui::ColorEdit4("Change Background Color", window::clear_color);
-   if (ImGui::Button("Reset Rotation & Scale"))
+   if (ImGui::Button("Reset Angle"))
    {
        scene::angle = 0.0f;
        scene::scale = 1.0f;
    }
+   ImGui::SameLine();
+   ImGui::SliderFloat("Rotation angle", &scene::angle, -glm::pi<float>(), +glm::pi<float>()); 
    ImGui::SliderFloat("Brightness", &scene::colorMultiplier, 0, 2);
    ImGui::RadioButton("Static Fish", &scene::waveSpeed, 0); ImGui::SameLine();
    ImGui::RadioButton("Animated Fish", &scene::waveSpeed, 1);
-   ImGui::Text("Lab 2.1");
-   ImGui::SliderFloat3("Non-Uniform Scaling", scene::scaleNonuniform, -2.0f, 2.0f);
+   ImGui::Text("");
+   ImGui::Text("Lab 2.2");
+   ImGui::Text("");
+   ImGui::RadioButton("Uniform Scale", &scene::isUniformScale, 0); ImGui::SameLine();
+   ImGui::RadioButton("Non-Uniform Scale", &scene::isUniformScale, 1);
+   if (scene::isUniformScale==0)
+   {
+       ImGui::SliderFloat("Scale", &scene::scale, -10.0f, +10.0f);
+       scene::scaleNonuniform[0] = scene::scale;
+       scene::scaleNonuniform[1] = scene::scale;
+       scene::scaleNonuniform[2] = scene::scale;
+   }
+   else
+   {
+       ImGui::SliderFloat3("Non-Uniform Scaling", scene::scaleNonuniform, -2.0f, 2.0f);
+       scene::scale = scene::scaleNonuniform[0];
+   }
    ImGui::Checkbox("Automatic Rotation", &scene::isRotationAutomatic);
-   ImGui::SliderFloat("Translate", &scene::tPosition, -1.0f, +1.0f);
+   ImGui::SliderFloat3("Translate", scene::tPosition, -1.0f, +1.0f);
    ImGui::RadioButton("M=T*R*S", &scene::multOrder, 0); ImGui::SameLine();
    ImGui::RadioButton("M=R*T*S", &scene::multOrder, 1);
+   ImGui::Text("");
    ImGui::Text("Lab 2.3");
+   ImGui::Text("");
    ImGui::SliderFloat3("Camera Position", scene::lookatAtt, -1.0f, 1.0f);
    ImGui::SliderFloat("fov", &scene::fov, 0, glm::pi<float>());
    ImGui::SliderFloat("near clipping distance", &scene::nearz, 0.1f, 3.0f);
@@ -149,10 +170,10 @@ void display(GLFWwindow* window)
 
     if (scene::isRotationAutomatic)
     {
-        scene::angle = scene::angle + glm::pi<float>()/ ImGui::GetIO().Framerate;
+        scene::angle = scene::angle + 2*glm::pi<float>()/ ImGui::GetIO().Framerate;
     }
     
-    glm::mat4 T = glm::translate(glm::vec3(scene::tPosition, 0.0f, 0.0f));
+    glm::mat4 T = glm::translate(glm::vec3(scene::tPosition[0], scene::tPosition[1], scene::tPosition[2]));
     glm::mat4 R = glm::rotate(scene::angle, glm::vec3(0.0f, 1.0f, 0.0f));
     glm::mat4 S = glm::scale(glm::vec3(scene::scaleNonuniform[0] * scene::mesh.mScaleFactor, scene::scaleNonuniform[1] * scene::mesh.mScaleFactor, scene::scaleNonuniform[2] * scene::mesh.mScaleFactor));
     
@@ -165,6 +186,8 @@ void display(GLFWwindow* window)
     {
         M = R * T * S;
     }
+
+  
    glm::mat4 V = glm::lookAt(glm::vec3(scene::lookatAtt[0], scene::lookatAtt[1], scene::lookatAtt[2]), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
    glm::mat4 P = glm::perspective(scene::fov, 1.0f, scene::nearz, scene::farz);
 

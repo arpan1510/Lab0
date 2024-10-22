@@ -56,6 +56,7 @@ namespace scene
    float farz=3.0f;
    const float ASPECT_RATIO = 1.0f;
    int isUniformScale = 0;
+   float windowAspectRatio=1.0;
 
    const std::string shader_dir = "shaders/";
    const std::string vertex_shader("lab2_vs.glsl");
@@ -189,7 +190,7 @@ void display(GLFWwindow* window)
 
   
    glm::mat4 V = glm::lookAt(glm::vec3(scene::lookatAtt[0], scene::lookatAtt[1], scene::lookatAtt[2]), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-   glm::mat4 P = glm::perspective(scene::fov, 1.0f, scene::nearz, scene::farz);
+   glm::mat4 P = glm::perspective(scene::fov, scene::windowAspectRatio, scene::nearz, scene::farz);
 
    glUseProgram(scene::shader);
 
@@ -201,7 +202,7 @@ void display(GLFWwindow* window)
       glUniform1i(tex_loc, 0); // we bound our texture to texture unit 0
    }
 
-   //Get location for shader uniform variable
+   //Get location for shader uniform variable 
    int PVM_loc = glGetUniformLocation(scene::shader, "PVM");
    if (PVM_loc != -1)
    {
@@ -308,27 +309,28 @@ void mouse_button(GLFWwindow* window, int button, int action, int mods)
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height){
-    // Calculate the new aspect ratio
-    float windowAspectRatio = (float)width / (float)height;
+    
+    glViewport(0, 0, width, height);
+    scene::windowAspectRatio = (float)width / (float)height;
 
-    int newWidth, newHeight;
+    /*int newWidth, newHeight;*/
 
-    if (windowAspectRatio > scene::ASPECT_RATIO) {
-        // Window is wider than the aspect ratio, so we adjust the width
+    /*if (windowAspectRatio > scene::ASPECT_RATIO) {
+        
         newWidth = (int)(height * scene::ASPECT_RATIO);
         newHeight = height;
     }
     else {
-        // Window is taller than the aspect ratio, so we adjust the height
+        
         newWidth = width;
         newHeight = (int)(width / scene::ASPECT_RATIO);
-    }
+    }*/
 
-    // Center the viewport (letterboxing or pillarboxing)
-    int viewportX = (width - newWidth) / 2;
-    int viewportY = (height - newHeight) / 2;
+    
+   /* int viewportX = (width - newWidth) / 2;
+    int viewportY = (height - newHeight) / 2;*/
 
-    glViewport(viewportX, viewportY, newWidth, newHeight);
+    
 }
 
 

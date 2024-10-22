@@ -57,6 +57,8 @@ namespace scene
    const float ASPECT_RATIO = 1.0f;
    int isUniformScale = 0;
    float windowAspectRatio=1.0;
+   glm::vec3 lightPosition(0.0f, 0.5f, 0.0f); 
+   glm::vec3 lightColor(1.0f, 1.0f, 1.0f);
 
    const std::string shader_dir = "shaders/";
    const std::string vertex_shader("lab2_vs.glsl");
@@ -137,6 +139,10 @@ void draw_gui(GLFWwindow* window)
 
    ImGui::End();
 
+   ImGui::Begin("Arpan Prajapati");
+   ImGui::SliderFloat("Point Lamp Position", &scene::lightPosition.y, 0.3f, 3.0f);
+   ImGui::End();
+
 
    static bool show_test = true;
    if(show_test)
@@ -210,6 +216,21 @@ void display(GLFWwindow* window)
       //Set the value of the variable at a specific location
       glUniformMatrix4fv(PVM_loc, 1, false, glm::value_ptr(PVM));
    }
+
+   int plpos_loc = glGetUniformLocation(scene::shader, "pl_position");
+   if (plpos_loc != -1)
+   {
+       //Set the value of the variable at a specific location
+       glUniform3f(plpos_loc, scene::lightPosition.x, scene::lightPosition.y, scene::lightPosition.z);
+   }
+
+   int plcol_loc = glGetUniformLocation(scene::shader, "pl_color");
+   if (plcol_loc != -1)
+   {
+       //Set the value of the variable at a specific location
+       glUniform3f(plcol_loc, scene::lightColor.r, scene::lightColor.g, scene::lightColor.g);
+   }
+   
 
    glBindVertexArray(scene::mesh.mVao);
    scene::mesh.DrawMesh();
@@ -312,25 +333,6 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height){
     
     glViewport(0, 0, width, height);
     scene::windowAspectRatio = (float)width / (float)height;
-
-    /*int newWidth, newHeight;*/
-
-    /*if (windowAspectRatio > scene::ASPECT_RATIO) {
-        
-        newWidth = (int)(height * scene::ASPECT_RATIO);
-        newHeight = height;
-    }
-    else {
-        
-        newWidth = width;
-        newHeight = (int)(width / scene::ASPECT_RATIO);
-    }*/
-
-    
-   /* int viewportX = (width - newWidth) / 2;
-    int viewportY = (height - newHeight) / 2;*/
-
-    
 }
 
 

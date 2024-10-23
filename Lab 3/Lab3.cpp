@@ -57,8 +57,16 @@ namespace scene
    const float ASPECT_RATIO = 1.0f;
    int isUniformScale = 0;
    float windowAspectRatio=1.0;
-   glm::vec3 lightPosition(0.0f, 0.5f, 0.0f); 
-   glm::vec3 lightColor(1.0f, 1.0f, 1.0f);
+   glm::vec3 lightPosition(0.0f, 0.8f, 0.0f); 
+   
+   float lightDiffuseColor[3] = { 1.0f, 1.0f, 1.0f };
+   float lightAmbColor[3] = { 0.3f, 0.3f, 0.3f };
+   float lightSpcColor[3] = { 0.5f, 0.5f, 0.5f };
+   float MaterialDiffuseColor[3] = { 1.0f, 1.0f, 1.0f };
+   float MaterialAmbColor[3] = { 1.0f, 1.0f, 1.0f };
+   float MaterialSpcColor[3] = { 0.5f, 0.5f, 0.5f };
+   float specExp = 32;
+   bool isTexApplied = true;
 
    const std::string shader_dir = "shaders/";
    const std::string vertex_shader("lab3_vs.glsl");
@@ -78,21 +86,21 @@ void draw_gui(GLFWwindow* window)
    ImGui::NewFrame();
 
    //Draw Gui
-   ImGui::Begin("Debug window");
+   /*ImGui::Begin("Debug window");
    if (ImGui::Button("Quit"))
    {
       glfwSetWindowShouldClose(window, GLFW_TRUE);
-   }
+   }*/
    //Lab 2: Uncomment these 
    
-   ImGui::SliderFloat("Rotation angle", &scene::angle, -glm::pi<float>(), +glm::pi<float>());
+   /*ImGui::SliderFloat("Rotation angle", &scene::angle, -glm::pi<float>(), +glm::pi<float>());
    ImGui::SliderFloat("Scale", &scene::scale, -10.0f, +10.0f);
 
    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-   ImGui::End();
+   ImGui::End();*/
 
 
-   ImGui::Begin("Arpan Prajapati");
+   /*ImGui::Begin("Arpan Prajapati");
    ImGui::Text("Lab 2.1");
    ImGui::Text("");
    ImGui::Checkbox("Enable Screen Clearing", &scene::isClearScreen);
@@ -137,18 +145,26 @@ void draw_gui(GLFWwindow* window)
    ImGui::SliderFloat("near clipping distance", &scene::nearz, 0.1f, 3.0f);
    ImGui::SliderFloat("far clipping distance", &scene::farz, 0.1f, 5.0f);
 
+   ImGui::End();*/
+
+   ImGui::Begin("Arpan Prajapati Lab3");
+   ImGui::SliderFloat("Point Lamp Position", &scene::lightPosition.y, 0.5f, 2.0f);
+   ImGui::ColorEdit4("Point Light Ambient Color", scene::lightAmbColor);
+   ImGui::ColorEdit4("Point Light Diffuse Color", scene::lightDiffuseColor);
+   ImGui::ColorEdit4("Point Light Specular Color", scene::lightSpcColor);
+   ImGui::ColorEdit4("Material Ambient Color", scene::MaterialAmbColor);
+   ImGui::ColorEdit4("Material Diffuse Color", scene::MaterialDiffuseColor);
+   ImGui::ColorEdit4("Material Specular Color", scene::MaterialSpcColor);
+   ImGui::SliderFloat("Specular Exponent", &scene::specExp, 1.0f, 100.0f);
+   ImGui::Checkbox("Apply Texture", &scene::isTexApplied);
    ImGui::End();
 
-   ImGui::Begin("Arpan Prajapati");
-   ImGui::SliderFloat("Point Lamp Position", &scene::lightPosition.y, 0.3f, 3.0f);
-   ImGui::End();
 
-
-   static bool show_test = true;
+   /*static bool show_test = true;
    if(show_test)
    {
       ImGui::ShowDemoWindow(&show_test);
-   }
+   }*/
 
    //End ImGui Frame
    ImGui::Render();
@@ -209,13 +225,26 @@ void display(GLFWwindow* window)
    }
 
    //Get location for shader uniform variable 
-   int PVM_loc = glGetUniformLocation(scene::shader, "PVM");
-   if (PVM_loc != -1)
+   int P_loc = glGetUniformLocation(scene::shader, "P");
+   if (P_loc != -1)
    {
-      glm::mat4 PVM = P * V * M;
+      
       //Set the value of the variable at a specific location
-      glUniformMatrix4fv(PVM_loc, 1, false, glm::value_ptr(PVM));
+      glUniformMatrix4fv(P_loc, 1, false, glm::value_ptr(P));
    }
+   int V_loc = glGetUniformLocation(scene::shader, "V");
+   if (V_loc != -1)
+   {
+       //Set the value of the variable at a specific location
+       glUniformMatrix4fv(V_loc, 1, false, glm::value_ptr(V));
+   }
+   int M_loc = glGetUniformLocation(scene::shader, "M");
+   if (M_loc != -1)
+   {
+       //Set the value of the variable at a specific location
+       glUniformMatrix4fv(M_loc, 1, false, glm::value_ptr(M));
+   }
+   
 
    int plpos_loc = glGetUniformLocation(scene::shader, "pl_position");
    if (plpos_loc != -1)
@@ -224,13 +253,60 @@ void display(GLFWwindow* window)
        glUniform3f(plpos_loc, scene::lightPosition.x, scene::lightPosition.y, scene::lightPosition.z);
    }
 
-   int plcol_loc = glGetUniformLocation(scene::shader, "pl_color");
+   int plcol_loc = glGetUniformLocation(scene::shader, "ld");
    if (plcol_loc != -1)
    {
        //Set the value of the variable at a specific location
-       glUniform3f(plcol_loc, scene::lightColor.r, scene::lightColor.g, scene::lightColor.g);
+       glUniform3f(plcol_loc, scene::lightDiffuseColor[0], scene::lightDiffuseColor[1], scene::lightDiffuseColor[2]);
    }
-   
+
+   int plambcol_loc = glGetUniformLocation(scene::shader, "la");
+   if (plambcol_loc != -1)
+   {
+       //Set the value of the variable at a specific location
+       glUniform3f(plambcol_loc, scene::lightAmbColor[0], scene::lightAmbColor[1], scene::lightAmbColor[2]);
+   }
+
+   int plspccol_loc = glGetUniformLocation(scene::shader, "ls");
+   if (plspccol_loc != -1)
+   {
+       //Set the value of the variable at a specific location
+       glUniform3f(plspccol_loc, scene::lightSpcColor[0], scene::lightSpcColor[1], scene::lightSpcColor[2]);
+   }
+   int camPos_loc = glGetUniformLocation(scene::shader, "camPos");
+   if (camPos_loc != -1)
+   {
+       //Set the value of the variable at a specific location
+       glUniform3f(camPos_loc, scene::lookatAtt[0], scene::lookatAtt[1], scene::lookatAtt[2]);
+   }
+   int ka_loc = glGetUniformLocation(scene::shader, "ka");
+   if (ka_loc != -1)
+   {
+       //Set the value of the variable at a specific location
+       glUniform3f(ka_loc, scene::MaterialAmbColor[0], scene::MaterialAmbColor[1], scene::MaterialAmbColor[2]);
+   }
+   int kd_loc = glGetUniformLocation(scene::shader, "kd");
+   if (kd_loc != -1)
+   {
+       //Set the value of the variable at a specific location
+       glUniform3f(kd_loc, scene::MaterialDiffuseColor[0], scene::MaterialDiffuseColor[1], scene::MaterialDiffuseColor[2]);
+   }
+   int ks_loc = glGetUniformLocation(scene::shader, "ks");
+   if (ks_loc != -1)
+   {
+       //Set the value of the variable at a specific location
+       glUniform3f(ks_loc, scene::MaterialSpcColor[0], scene::MaterialSpcColor[1], scene::MaterialSpcColor[2]);
+   }
+   int alpha_loc = glGetUniformLocation(scene::shader, "alpha");
+   if (alpha_loc != -1)
+   {
+       glUniform1f(alpha_loc, scene::specExp);
+   }
+   int istex_loc = glGetUniformLocation(scene::shader, "isTexEnabled");
+   if (istex_loc != -1)
+   {
+       glUniform1i(istex_loc, scene::isTexApplied);
+   }
 
    glBindVertexArray(scene::mesh.mVao);
    scene::mesh.DrawMesh();

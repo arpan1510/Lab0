@@ -57,15 +57,15 @@ namespace scene
    const float ASPECT_RATIO = 1.0f;
    int isUniformScale = 0;
    float windowAspectRatio=1.0;
-   glm::vec3 lightPosition(0.0f, 0.8f, 0.0f); 
+   glm::vec3 lightPosition(0.0f, 0.7f, 0.0f); 
    
-   float lightDiffuseColor[3] = { 1.0f, 1.0f, 1.0f };
-   float lightAmbColor[3] = { 0.3f, 0.3f, 0.3f };
-   float lightSpcColor[3] = { 0.5f, 0.5f, 0.5f };
-   float MaterialDiffuseColor[3] = { 1.0f, 1.0f, 1.0f };
-   float MaterialAmbColor[3] = { 1.0f, 1.0f, 1.0f };
-   float MaterialSpcColor[3] = { 0.5f, 0.5f, 0.5f };
-   float specExp = 32;
+   float lightDiffuseColor[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+   float lightAmbColor[4] = { 0.3f, 0.3f, 0.3f, 1.0f };
+   float lightSpcColor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
+   float MaterialDiffuseColor[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+   float MaterialAmbColor[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+   float MaterialSpcColor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
+   float specExp = 7;
    bool isTexApplied = true;
 
    const std::string shader_dir = "shaders/";
@@ -100,7 +100,7 @@ void draw_gui(GLFWwindow* window)
    ImGui::End();*/
 
 
-   /*ImGui::Begin("Arpan Prajapati");
+   ImGui::Begin("Arpan Prajapati Lab2");
    ImGui::Text("Lab 2.1");
    ImGui::Text("");
    ImGui::Checkbox("Enable Screen Clearing", &scene::isClearScreen);
@@ -145,17 +145,17 @@ void draw_gui(GLFWwindow* window)
    ImGui::SliderFloat("near clipping distance", &scene::nearz, 0.1f, 3.0f);
    ImGui::SliderFloat("far clipping distance", &scene::farz, 0.1f, 5.0f);
 
-   ImGui::End();*/
+   ImGui::End();
 
    ImGui::Begin("Arpan Prajapati Lab3");
-   ImGui::SliderFloat("Point Lamp Position", &scene::lightPosition.y, 0.5f, 2.0f);
-   ImGui::ColorEdit4("Point Light Ambient Color", scene::lightAmbColor);
-   ImGui::ColorEdit4("Point Light Diffuse Color", scene::lightDiffuseColor);
-   ImGui::ColorEdit4("Point Light Specular Color", scene::lightSpcColor);
-   ImGui::ColorEdit4("Material Ambient Color", scene::MaterialAmbColor);
-   ImGui::ColorEdit4("Material Diffuse Color", scene::MaterialDiffuseColor);
-   ImGui::ColorEdit4("Material Specular Color", scene::MaterialSpcColor);
-   ImGui::SliderFloat("Specular Exponent", &scene::specExp, 1.0f, 100.0f);
+   ImGui::SliderFloat("Light Position", &scene::lightPosition.y, 0.5f, 2.0f);
+   ImGui::ColorEdit4("La Light Ambient Color", scene::lightAmbColor);
+   ImGui::ColorEdit4("Ld Light Diffuse Color", scene::lightDiffuseColor);
+   ImGui::ColorEdit4("Ls Light Specular Color", scene::lightSpcColor);
+   ImGui::ColorEdit4("Ka Material Ambient Color", scene::MaterialAmbColor);
+   ImGui::ColorEdit4("Kd Material Diffuse Color", scene::MaterialDiffuseColor);
+   ImGui::ColorEdit4("Ks Material Specular Color", scene::MaterialSpcColor);
+   ImGui::SliderFloat("Shininess", &scene::specExp, 0.0f, 100.0f);
    ImGui::Checkbox("Apply Texture", &scene::isTexApplied);
    ImGui::End();
 
@@ -279,18 +279,37 @@ void display(GLFWwindow* window)
        //Set the value of the variable at a specific location
        glUniform3f(camPos_loc, scene::lookatAtt[0], scene::lookatAtt[1], scene::lookatAtt[2]);
    }
-   int ka_loc = glGetUniformLocation(scene::shader, "ka");
-   if (ka_loc != -1)
+   if (scene::isTexApplied)
    {
-       //Set the value of the variable at a specific location
-       glUniform3f(ka_loc, scene::MaterialAmbColor[0], scene::MaterialAmbColor[1], scene::MaterialAmbColor[2]);
+       int ka_loc = glGetUniformLocation(scene::shader, "ka");
+       if (ka_loc != -1)
+       {
+           //Set the value of the variable at a specific location
+           glUniform3f(ka_loc, 1.0f, 1.0f, 1.0f);
+       }
+       int kd_loc = glGetUniformLocation(scene::shader, "kd");
+       if (kd_loc != -1)
+       {
+           //Set the value of the variable at a specific location
+           glUniform3f(kd_loc, 1.0f, 1.0f, 1.0f);
+       }
    }
-   int kd_loc = glGetUniformLocation(scene::shader, "kd");
-   if (kd_loc != -1)
+   else
    {
-       //Set the value of the variable at a specific location
-       glUniform3f(kd_loc, scene::MaterialDiffuseColor[0], scene::MaterialDiffuseColor[1], scene::MaterialDiffuseColor[2]);
+       int ka_loc = glGetUniformLocation(scene::shader, "ka");
+       if (ka_loc != -1)
+       {
+           //Set the value of the variable at a specific location
+           glUniform3f(ka_loc, scene::MaterialAmbColor[0], scene::MaterialAmbColor[1], scene::MaterialAmbColor[2]);
+       }
+       int kd_loc = glGetUniformLocation(scene::shader, "kd");
+       if (kd_loc != -1)
+       {
+           //Set the value of the variable at a specific location
+           glUniform3f(kd_loc, scene::MaterialDiffuseColor[0], scene::MaterialDiffuseColor[1], scene::MaterialDiffuseColor[2]);
+       }
    }
+   
    int ks_loc = glGetUniformLocation(scene::shader, "ks");
    if (ks_loc != -1)
    {
@@ -408,6 +427,10 @@ void mouse_button(GLFWwindow* window, int button, int action, int mods)
 void framebuffer_size_callback(GLFWwindow* window, int width, int height){
     
     glViewport(0, 0, width, height);
+    if (height == 0)
+    {
+        height = 1;
+    }
     scene::windowAspectRatio = (float)width / (float)height;
 }
 

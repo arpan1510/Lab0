@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{B3CDC4E0-0F97-4C3B-B9A6-5B72DA778FA2}</ProjectGuid>
+    <RootNamespace>Lab0</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(SolutionDir)\tinyusdz;$(SolutionDir)\imgui-master;$(SolutionDir)\include;$(SolutionDir)\imgui_master;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <CustomBuildAfterTargets>Clean</CustomBuildAfterTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(SolutionDir)\tinyusdz;$(SolutionDir)\imgui-master;$(SolutionDir)\include;$(SolutionDir)\imgui_master;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <CustomBuildAfterTargets>Clean</CustomBuildAfterTargets>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;USER_NAME="$(UserName)";SOLUTION_NAME="$(SolutionName)";PROJECT_NAME="$(ProjectName)";NOMINMAX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>assimp-vc143-mt.lib;FreeImage.lib;glew32.lib;glfw3dll.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y "$(TargetDir)$(TargetName).exe" "$(ProjectDir)dist\"
+xcopy /Y "$(ProjectDir)shaders\*.glsl" "$(ProjectDir)dist\shaders\"
+xcopy /Y "$(SolutionDir)lib\*.dll" "$(ProjectDir)dist\"
+xcopy /Y "$(ProjectDir)assets\*" "$(ProjectDir)dist\assets\"</Command>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>del /q /s "$(ProjectDir)dist\*.*"</Command>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;USER_NAME="$(UserName)";SOLUTION_NAME="$(SolutionName)";PROJECT_NAME="$(ProjectName)";NOMINMAX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>assimp-vc143-mt.lib;FreeImage.lib;glew32.lib;glfw3dll.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y "$(TargetDir)$(TargetName).exe" "$(ProjectDir)dist\"
+xcopy /Y "$(ProjectDir)shaders\*.glsl" "$(ProjectDir)dist\shaders\"
+xcopy /Y "$(SolutionDir)lib\*.dll" "$(ProjectDir)dist\"
+xcopy /Y "$(ProjectDir)assets\*" "$(ProjectDir)dist\assets\"</Command>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>del /q /s "$(ProjectDir)dist\*.*"</Command>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\imgui-master\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="..\imgui-master\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="..\imgui-master\imgui.cpp" />
+    <ClCompile Include="..\imgui-master\imgui_demo.cpp" />
+    <ClCompile Include="..\imgui-master\imgui_draw.cpp" />
+    <ClCompile Include="..\imgui-master\imgui_tables.cpp" />
+    <ClCompile Include="..\imgui-master\imgui_widgets.cpp" />
+    <ClCompile Include="..\tinyusdz\ascii-parser-basetype.cc" />
+    <ClCompile Include="..\tinyusdz\ascii-parser-timesamples-array.cc" />
+    <ClCompile Include="..\tinyusdz\ascii-parser-timesamples.cc" />
+    <ClCompile Include="..\tinyusdz\ascii-parser.cc" />
+    <ClCompile Include="..\tinyusdz\asset-resolution.cc" />
+    <ClCompile Include="..\tinyusdz\audio-loader.cc" />
+    <ClCompile Include="..\tinyusdz\c-tinyusd.cc" />
+    <ClCompile Include="..\tinyusdz\composition.cc" />
+    <ClCompile Include="..\tinyusdz\crate-format.cc" />
+    <ClCompile Include="..\tinyusdz\crate-pprint.cc" />
+    <ClCompile Include="..\tinyusdz\crate-reader.cc" />
+    <ClCompile Include="..\tinyusdz\crate-writer.cc" />
+    <ClCompile Include="..\tinyusdz\image-loader.cc" />
+    <ClCompile Include="..\tinyusdz\image-util.cc" />
+    <ClCompile Include="..\tinyusdz\image-writer.cc" />
+    <ClCompile Include="..\tinyusdz\integerCoding.cpp" />
+    <ClCompile Include="..\tinyusdz\io-util.cc" />
+    <ClCompile Include="..\tinyusdz\json-to-usd.cc" />
+    <ClCompile Include="..\tinyusdz\linear-algebra.cc" />
+    <ClCompile Include="..\tinyusdz\lz4-compression.cc" />
+    <ClCompile Include="..\tinyusdz\lz4\lz4.c" />
+    <ClCompile Include="..\tinyusdz\path-util.cc" />
+    <ClCompile Include="..\tinyusdz\performance.cc" />
+    <ClCompile Include="..\tinyusdz\pprinter.cc" />
+    <ClCompile Include="..\tinyusdz\prim-composition.cc" />
+    <ClCompile Include="..\tinyusdz\prim-reconstruct.cc" />
+    <ClCompile Include="..\tinyusdz\prim-types.cc" />
+    <ClCompile Include="..\tinyusdz\primvar.cc" />
+    <ClCompile Include="..\tinyusdz\pxr-compat.cc" />
+    <ClCompile Include="..\tinyusdz\stage.cc" />
+    <ClCompile Include="..\tinyusdz\str-util.cc" />
+    <ClCompile Include="..\tinyusdz\tiny-format.cc" />
+    <ClCompile Include="..\tinyusdz\tinyusdz.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\attribute-eval-typed-animatable-fallback.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\attribute-eval-typed-animatable.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\attribute-eval-typed-fallback.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\attribute-eval-typed.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\attribute-eval.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\facial.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\json-export.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\obj-export.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\prim-apply.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\render-data.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\scene-access.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\shader-network.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\texture-util.cc" />
+    <ClCompile Include="..\tinyusdz\tydra\usd-export.cc" />
+    <ClCompile Include="..\tinyusdz\usd-to-json.cc" />
+    <ClCompile Include="..\tinyusdz\usda-reader.cc" />
+    <ClCompile Include="..\tinyusdz\usda-writer.cc" />
+    <ClCompile Include="..\tinyusdz\usdc-reader.cc" />
+    <ClCompile Include="..\tinyusdz\usdc-writer.cc" />
+    <ClCompile Include="..\tinyusdz\usdFbx.cc" />
+    <ClCompile Include="..\tinyusdz\usdGeom.cc" />
+    <ClCompile Include="..\tinyusdz\usdLux.cc" />
+    <ClCompile Include="..\tinyusdz\usdMtlx.cc" />
+    <ClCompile Include="..\tinyusdz\usdObj.cc" />
+    <ClCompile Include="..\tinyusdz\usdShade.cc" />
+    <ClCompile Include="..\tinyusdz\usdSkel.cc" />
+    <ClCompile Include="..\tinyusdz\usdVox.cc" />
+    <ClCompile Include="..\tinyusdz\value-pprint.cc" />
+    <ClCompile Include="..\tinyusdz\value-types.cc" />
+    <ClCompile Include="..\tinyusdz\xform.cc" />
+    <ClCompile Include="DebugCallback.cpp" />
+    <ClCompile Include="InitShader.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="LoadMesh.cpp" />
+    <ClCompile Include="LoadTexture.cpp" />
+    <ClCompile Include="UsdScene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\imgui-master\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="..\imgui-master\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="..\imgui-master\imconfig.h" />
+    <ClInclude Include="..\imgui-master\imgui.h" />
+    <ClInclude Include="..\imgui-master\imgui_internal.h" />
+    <ClInclude Include="..\tinyusdz\ascii-parser.hh" />
+    <ClInclude Include="..\tinyusdz\asset-resolution.hh" />
+    <ClInclude Include="..\tinyusdz\audio-loader.hh" />
+    <ClInclude Include="..\tinyusdz\c-tinyusd.h" />
+    <ClInclude Include="..\tinyusdz\composition.hh" />
+    <ClInclude Include="..\tinyusdz\crate-format.hh" />
+    <ClInclude Include="..\tinyusdz\crate-pprint.hh" />
+    <ClInclude Include="..\tinyusdz\crate-reader.hh" />
+    <ClInclude Include="..\tinyusdz\crate-writer.hh" />
+    <ClInclude Include="..\tinyusdz\handle-allocator.hh" />
+    <ClInclude Include="..\tinyusdz\image-loader.hh" />
+    <ClInclude Include="..\tinyusdz\image-types.hh" />
+    <ClInclude Include="..\tinyusdz\image-util.hh" />
+    <ClInclude Include="..\tinyusdz\image-writer.hh" />
+    <ClInclude Include="..\tinyusdz\integerCoding.h" />
+    <ClInclude Include="..\tinyusdz\io-util.hh" />
+    <ClInclude Include="..\tinyusdz\json-to-usd.hh" />
+    <ClInclude Include="..\tinyusdz\linear-algebra.hh" />
+    <ClInclude Include="..\tinyusdz\lz4-compression.hh" />
+    <ClInclude Include="..\tinyusdz\lz4\lz4.h" />
+    <ClInclude Include="..\tinyusdz\path-util.hh" />
+    <ClInclude Include="..\tinyusdz\performance.hh" />
+    <ClInclude Include="..\tinyusdz\pprinter.hh" />
+    <ClInclude Include="..\tinyusdz\prim-pprint.hh" />
+    <ClInclude Include="..\tinyusdz\prim-reconstruct.hh" />
+    <ClInclude Include="..\tinyusdz\prim-types.hh" />
+    <ClInclude Include="..\tinyusdz\primvar.hh" />
+    <ClInclude Include="..\tinyusdz\pxr-compat.hh" />
+    <ClInclude Include="..\tinyusdz\stage.hh" />
+    <ClInclude Include="..\tinyusdz\str-util.hh" />
+    <ClInclude Include="..\tinyusdz\stream-reader.hh" />
+    <ClInclude Include="..\tinyusdz\stream-writer.hh" />
+    <ClInclude Include="..\tinyusdz\texture-types.hh" />
+    <ClInclude Include="..\tinyusdz\tiny-format.hh" />
+    <ClInclude Include="..\tinyusdz\tiny-variant.hh" />
+    <ClInclude Include="..\tinyusdz\tinyusdz.hh" />
+    <ClInclude Include="..\tinyusdz\token-type.hh" />
+    <ClInclude Include="..\tinyusdz\tydra\attribute-eval.hh" />
+    <ClInclude Include="..\tinyusdz\tydra\facial.hh" />
+    <ClInclude Include="..\tinyusdz\tydra\json-export.hh" />
+    <ClInclude Include="..\tinyusdz\tydra\nurbs-tess.hh" />
+    <ClInclude Include="..\tinyusdz\tydra\obj-export.hh" />
+    <ClInclude Include="..\tinyusdz\tydra\prim-apply.hh" />
+    <ClInclude Include="..\tinyusdz\tydra\render-data.hh" />
+    <ClInclude Include="..\tinyusdz\tydra\scene-access.hh" />
+    <ClInclude Include="..\tinyusdz\tydra\shader-network.hh" />
+    <ClInclude Include="..\tinyusdz\tydra\texture-loader.hh" />
+    <ClInclude Include="..\tinyusdz\tydra\texture-util.hh" />
+    <ClInclude Include="..\tinyusdz\tydra\usd-export.hh" />
+    <ClInclude Include="..\tinyusdz\unicode-xid.hh" />
+    <ClInclude Include="..\tinyusdz\usd-to-json.hh" />
+    <ClInclude Include="..\tinyusdz\usda-reader.hh" />
+    <ClInclude Include="..\tinyusdz\usda-writer.hh" />
+    <ClInclude Include="..\tinyusdz\usdc-reader.hh" />
+    <ClInclude Include="..\tinyusdz\usdc-writer.hh" />
+    <ClInclude Include="..\tinyusdz\usdFbx.hh" />
+    <ClInclude Include="..\tinyusdz\usdGeom.hh" />
+    <ClInclude Include="..\tinyusdz\usdLux.hh" />
+    <ClInclude Include="..\tinyusdz\usdMtlx.hh" />
+    <ClInclude Include="..\tinyusdz\usdObj.hh" />
+    <ClInclude Include="..\tinyusdz\usdShade.hh" />
+    <ClInclude Include="..\tinyusdz\usdSkel.hh" />
+    <ClInclude Include="..\tinyusdz\usdVox.hh" />
+    <ClInclude Include="..\tinyusdz\value-eval-util.hh" />
+    <ClInclude Include="..\tinyusdz\value-pprint.hh" />
+    <ClInclude Include="..\tinyusdz\value-types.hh" />
+    <ClInclude Include="..\tinyusdz\xform.hh" />
+    <ClInclude Include="DebugCallback.h" />
+    <ClInclude Include="InitShader.h" />
+    <ClInclude Include="LoadMesh.h" />
+    <ClInclude Include="LoadTexture.h" />
+    <ClInclude Include="UsdScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\tinyusdz\common-macros.inc" />
+    <None Include="..\tinyusdz\define-type-trait.inc" />
+    <None Include="..\tinyusdz\math-util.inc" />
+    <None Include="..\tinyusdz\prim-type-macros.inc" />
+    <None Include="..\tinyusdz\tiny-any.inc" />
+    <None Include="..\tinyusdz\unicode-xid-table.inc" />
+    <None Include="..\tinyusdz\value-type-macros.inc" />
+    <None Include="shaders\default_fs.glsl" />
+    <None Include="shaders\default_vs.glsl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

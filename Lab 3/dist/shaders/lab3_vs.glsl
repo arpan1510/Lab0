@@ -25,6 +25,4 @@ void main(void)
     gl_Position = P*V*M * vec4(modified_position, 1.0);
 	
 	tex_coord = tex_coord_attrib; //send tex_coord to fragment shader
-    
-
 }

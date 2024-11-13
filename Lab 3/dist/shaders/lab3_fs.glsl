@@ -22,9 +22,7 @@ out vec4 fragcolor; //the output color for this fragment
 void main(void)
 { 
     //Ambient Lighting
-
     vec3 ambient= ka*la;
-
 
 	// Diffuse lighting
     vec3 nw = normalize(normal);

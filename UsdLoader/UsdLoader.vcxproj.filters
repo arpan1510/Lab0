@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{14edac7d-e58d-4eaf-a8ea-2e4924b85697}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{e9a39bae-9c57-476d-9ad7-7dc9f3d35110}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tinyusdz">
+      <UniqueIdentifier>{4e5199f6-747a-4dd4-8442-a2fb9980ffc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tydra">
+      <UniqueIdentifier>{fb6c173f-5b20-4b46-acdc-64997cae5abd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lz4">
+      <UniqueIdentifier>{ee0cebec-ecdb-42c6-83bc-5f3f38cb4607}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="InitShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadMesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugCallback.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-master\imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-master\imgui_demo.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-master\imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-master\imgui_tables.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-master\imgui_widgets.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-master\backends\imgui_impl_glfw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-master\backends\imgui_impl_opengl3.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tinyusdz.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\ascii-parser.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\ascii-parser-basetype.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\ascii-parser-timesamples.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\ascii-parser-timesamples-array.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\asset-resolution.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\audio-loader.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\composition.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\crate-format.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\crate-pprint.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\crate-reader.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\crate-writer.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\c-tinyusd.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\image-loader.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\image-util.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\image-writer.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\integerCoding.cpp">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\io-util.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\json-to-usd.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\linear-algebra.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\lz4-compression.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\path-util.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\performance.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\pprinter.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\prim-composition.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\prim-types.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\primvar.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\pxr-compat.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\stage.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\str-util.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tiny-format.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usda-reader.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usda-writer.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usdc-reader.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usdc-writer.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usdFbx.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usdGeom.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usdLux.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usdMtlx.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usdObj.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usdShade.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usdSkel.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usd-to-json.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\usdVox.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\value-pprint.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\value-types.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\xform.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\attribute-eval.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\attribute-eval-typed.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\attribute-eval-typed-animatable.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\attribute-eval-typed-animatable-fallback.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\attribute-eval-typed-fallback.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\facial.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\json-export.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\obj-export.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\prim-apply.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\render-data.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\scene-access.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\shader-network.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\texture-util.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\tydra\usd-export.cc">
+      <Filter>tydra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\prim-reconstruct.cc">
+      <Filter>tinyusdz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyusdz\lz4\lz4.c">
+      <Filter>lz4</Filter>
+    </ClCompile>
+    <ClCompile Include="UsdScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InitShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugCallback.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-master\imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-master\imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-master\imgui_internal.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-master\backends\imgui_impl_glfw.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-master\backends\imgui_impl_opengl3.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tinyusdz.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\ascii-parser.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\asset-resolution.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\audio-loader.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\composition.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\crate-format.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\crate-pprint.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\crate-reader.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\crate-writer.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\c-tinyusd.h">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\handle-allocator.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\image-loader.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\image-types.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\image-util.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\image-writer.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\integerCoding.h">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\io-util.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\json-to-usd.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\linear-algebra.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\lz4-compression.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\path-util.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\performance.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\pprinter.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\prim-pprint.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\prim-types.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\primvar.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\pxr-compat.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\stage.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\stream-reader.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\stream-writer.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\str-util.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\texture-types.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tiny-format.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tiny-variant.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\token-type.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\unicode-xid.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usda-reader.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usda-writer.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usdc-reader.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usdc-writer.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usdFbx.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usdGeom.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usdLux.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usdMtlx.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usdObj.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usdShade.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usdSkel.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usd-to-json.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\usdVox.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\value-eval-util.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\value-pprint.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\value-types.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\xform.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tydra\attribute-eval.hh">
+      <Filter>tydra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tydra\facial.hh">
+      <Filter>tydra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tydra\json-export.hh">
+      <Filter>tydra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tydra\nurbs-tess.hh">
+      <Filter>tydra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tydra\obj-export.hh">
+      <Filter>tydra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tydra\prim-apply.hh">
+      <Filter>tydra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tydra\render-data.hh">
+      <Filter>tydra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tydra\scene-access.hh">
+      <Filter>tydra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tydra\shader-network.hh">
+      <Filter>tydra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tydra\texture-loader.hh">
+      <Filter>tydra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tydra\texture-util.hh">
+      <Filter>tydra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\tydra\usd-export.hh">
+      <Filter>tydra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\prim-reconstruct.hh">
+      <Filter>tinyusdz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyusdz\lz4\lz4.h">
+      <Filter>lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="UsdScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\default_fs.glsl">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\default_vs.glsl">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\tinyusdz\common-macros.inc">
+      <Filter>tinyusdz</Filter>
+    </None>
+    <None Include="..\tinyusdz\define-type-trait.inc">
+      <Filter>tinyusdz</Filter>
+    </None>
+    <None Include="..\tinyusdz\math-util.inc">
+      <Filter>tinyusdz</Filter>
+    </None>
+    <None Include="..\tinyusdz\prim-type-macros.inc">
+      <Filter>tinyusdz</Filter>
+    </None>
+    <None Include="..\tinyusdz\tiny-any.inc">
+      <Filter>tinyusdz</Filter>
+    </None>
+    <None Include="..\tinyusdz\unicode-xid-table.inc">
+      <Filter>tinyusdz</Filter>
+    </None>
+    <None Include="..\tinyusdz\value-type-macros.inc">
+      <Filter>tinyusdz</Filter>
+    </None>
+  </ItemGroup>
+</Project>

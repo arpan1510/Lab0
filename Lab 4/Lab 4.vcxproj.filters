@@ -88,10 +88,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\lab3_fs.glsl">
+    <None Include="shaders\lab4_fs.glsl">
       <Filter>shaders</Filter>
     </None>
-    <None Include="shaders\lab3_vs.glsl">
+    <None Include="shaders\lab4_vs.glsl">
       <Filter>shaders</Filter>
     </None>
   </ItemGroup>

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{8FD31D82-118C-4DA4-A293-773D96C3C7DE}</ProjectGuid>
+    <ProjectGuid>{ADF73C3E-5B5E-4876-992D-5961C0C42ACB}</ProjectGuid>
     <RootNamespace>Lab0</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -182,8 +182,8 @@ xcopy /Y "$(ProjectDir)assets\*" "$(ProjectDir)dist\assets\"</Command>
     <ClInclude Include="LoadTexture.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\lab3_fs.glsl" />
-    <None Include="shaders\lab3_vs.glsl" />
+    <None Include="shaders\lab4_fs.glsl" />
+    <None Include="shaders\lab4_vs.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

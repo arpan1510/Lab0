@@ -21,26 +21,9 @@ out vec4 fragcolor; //the output color for this fragment
 
 void main(void)
 { 
-    //Ambient Lighting
-    vec3 ambient= ka*la;
-
-	// Diffuse lighting
-    vec3 nw = normalize(normal);
-    vec3 lw = normalize(pl_position - FragPos);
-    vec3 diffuse = kd*ld*max(dot(nw, lw), 0.0);
-
-    // Specular Lighting
-    vec3 vw = normalize(camPos-FragPos);
-    vec3 rw = reflect(-lw, nw);
-    vec3 specular = ks*ls*pow(max(dot(vw, rw), 0.0), alpha);
-
-    vec3 pointLightResult= ambient+(diffuse+specular)/pow(length(pl_position - FragPos), 2);
-
-    if (isTexEnabled) {
-        fragcolor = texture(diffuse_tex, tex_coord)*cm*vec4(pointLightResult,0);
-    } else {
-        fragcolor = cm*vec4(pointLightResult,0);
-    }
+    
+    fragcolor = vec4(1,1,1,0);
+    
 }
 
 

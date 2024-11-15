@@ -22,6 +22,8 @@
 #include "LoadMesh.h"      //Functions for creating OpenGL buffers from mesh files
 #include "LoadTexture.h"   //Functions for creating OpenGL textures from image files
 
+GLuint vbo1 = -1;
+
 namespace window
 {
    const char* const title = USER_NAME " " PROJECT_NAME; //defined in project settings
@@ -500,14 +502,7 @@ int main(void)
       glfwTerminate();
       return -1;
 
-      glBindBuffer(GL_ARRAY_BUFFER, vbo1); //specify the buffer where vertex attribute data is stored
-      //get a reference to an attribute variable name in a shader
-      GLint pos_loc = glGetAttribLocation(scene::shader, "pos_attrib1");
-      glEnableVertexAttribArray(pos_loc); //enable this attribute
-      //tell opengl how to get the attribute values out of the vbo
-      glVertexAttribPointer(pos_loc, 3, GL_FLOAT, false, 0, 0);
-      //Draw 3 vertices from the VBO as GL_TRIANGLES, starting from vertex 0
-      glDrawArrays(GL_TRIANGLES, 0, 3);
+      
    }
 
    //Register callback functions with glfw. 
@@ -521,7 +516,7 @@ int main(void)
 
    init();
 
-   GLuint vbo1 = -1;
+  
    glGenBuffers(1, &vbo1); // Generate vbo to hold vertex attributes for triangle
    //binding vbo means that subsequent glBufferdata calls will load data into this object
    glBindBuffer(GL_ARRAY_BUFFER, vbo1);
@@ -539,6 +534,15 @@ int main(void)
    {
       idle();
       display(window);
+
+      glBindBuffer(GL_ARRAY_BUFFER, vbo1); //specify the buffer where vertex attribute data is stored
+      //get a reference to an attribute variable name in a shader
+      GLint pos_loc = glGetAttribLocation(scene::shader, "pos_attrib1");
+      glEnableVertexAttribArray(pos_loc); //enable this attribute
+      //tell opengl how to get the attribute values out of the vbo
+      glVertexAttribPointer(pos_loc, 3, GL_FLOAT, false, 0, 0);
+      //Draw 3 vertices from the VBO as GL_TRIANGLES, starting from vertex 0
+      glDrawArrays(GL_TRIANGLES, 0, 3);
 
       // Poll for and process events 
       glfwPollEvents();
